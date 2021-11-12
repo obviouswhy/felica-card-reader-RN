@@ -7,13 +7,8 @@
  */
 
 import React from 'react'
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  useColorScheme,
-  View,
-} from 'react-native'
+import { Button, StatusBar, useColorScheme } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import Colors from './src/utils/Colors'
 
 const App = () => {
@@ -21,21 +16,19 @@ const App = () => {
 
   const backgroundStyle = {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   }
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}></View>
-      </ScrollView>
+      <StatusBar
+        translucent={true}
+        backgroundColor={'transparent'}
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+      />
+      <Button onPress={() => alert()} title={'Scan'} />
     </SafeAreaView>
   )
 }
